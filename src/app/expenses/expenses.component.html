@@ -1,0 +1,56 @@
+<div class="m-container">
+  <h2>Expenses</h2>
+  <div class="section" id="months" fxLayout="row">
+    <div fxFlex="60px" *ngFor="let month of months" class="card m-card sm-card" [ngClass]="{ 'active' : month.id === currentMonth}"
+      (click)="getExpenseByMonth(month.id)">
+      {{month.name}}
+    </div>
+  </div>
+
+  <hr>
+  <h2>Current Month</h2>
+  <div class="section" *ngIf="monthlyExpense.length > 0">
+    <p class="expense" *ngFor="let expense of monthlyExpense">
+      <span>Rs/- {{expense.amount}}</span>
+      <span>{{expense.name}}</span>
+      <span>{{formatDate(expense.created_at)}}</span>
+    </p>
+    <p class="expense" style="font-weight: bold">Total : Rs/- {{totalExpense}}</p>
+  </div>
+  <div class="section" *ngIf="monthlyExpense.length === 0">
+    <p>No Expense.</p>
+  </div>
+
+  <hr>
+
+  <div class="section">
+    <form autocomplete="off" (ngSubmit)="addExpense()">
+
+      <div class="form-group">
+        <label for="amount">Amount</label>
+        <input type="text" class="form-control" [(ngModel)]="amount" name="amount" placeholder="Amount">
+      </div>
+
+      <div class="form-group">
+        <label for="type">Expense Type</label>
+        <div *ngFor="let type of expenseTypes">
+          <input type="radio" [value]="type.id" name="typeId" [(ngModel)]="typeId"> {{type.name}}
+        </div>
+        <div>
+          <input type="radio" value="0" name="typeId" [(ngModel)]="typeId"> Other
+        </div>
+      </div>
+
+      <div *ngIf="showAddField" class="form-group">
+        <label for="field">New Field</label>
+        <input type="text" class="form-control" name="field" [(ngModel)]="name" placeholder="New Field">
+      </div>
+
+      <div>
+        <input type="submit" class="m-button btn" value="Add">
+        <button *ngIf="!showAddField" class="m-button btn" (click)="showAddField = true">Add Field</button>
+      </div>
+    </form>
+  </div>
+
+</div>

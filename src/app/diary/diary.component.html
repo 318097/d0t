@@ -1,0 +1,13 @@
+<div class="m-container">
+  <h3>Diary</h3>
+  <div class="section">
+    <!-- <button class="btn" routerLink="/admin/diary/add">Add Post</button> -->
+  </div>
+  <hr>
+  <div class="section" fxLayout="row">
+    <div class="card m-card" *ngFor="let diary of diaryList">
+      <p>{{diary.content}}</p>
+      <!-- <h3 [routerLink]="['/diary/', diary.id]">{{diary.title}}</h3> -->
+    </div>
+  </div>
+</div>

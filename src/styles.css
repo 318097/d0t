@@ -1,1 +1,10 @@
-/* You can add global styles to this file, and also import other style files */
+@import "common.scss";
+@font-face {
+    font-family: calibri-font;
+    src: url(./assets/fonts/Calibri.ttf);
+}
+
+* {
+    font-family: calibri-font;
+    outline: none;
+}

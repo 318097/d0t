@@ -4,6 +4,8 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "fu": "ng serve --port 9999 --open",
+    "f": "ng serve --port 9999",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -12,15 +14,19 @@
   "private": true,
   "dependencies": {
     "@angular/animations": "^6.0.3",
+    "@angular/cdk": "^6.3.3",
     "@angular/common": "^6.0.3",
     "@angular/compiler": "^6.0.3",
     "@angular/core": "^6.0.3",
+    "@angular/flex-layout": "^6.0.0-beta.16",
     "@angular/forms": "^6.0.3",
     "@angular/http": "^6.0.3",
     "@angular/platform-browser": "^6.0.3",
     "@angular/platform-browser-dynamic": "^6.0.3",
     "@angular/router": "^6.0.3",
+    "bootstrap": "^4.1.2",
     "core-js": "^2.5.4",
+    "ngx-bootstrap": "^3.0.1",
     "rxjs": "^6.0.0",
     "zone.js": "^0.8.26"
   },

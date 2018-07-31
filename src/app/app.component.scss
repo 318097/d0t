@@ -1,0 +1,49 @@
+@import "src/variables.scss";
+.root {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    .header {
+        height: 70px; // background: $header;
+        h1 {
+            cursor: pointer;
+            text-align: center;
+            padding: 10px 0;
+            color: $black;
+            font-weight: bold;
+        }
+    }
+    .navigation {
+        a {
+            padding: 5px 5px 3px 5px;
+            margin: 0 3px;
+            background: rgb(243, 243, 243);
+            border-bottom: 2px solid transparent;
+            color: $black; // transition: 1.5s;
+            &:hover {
+                text-decoration: none;
+                color: $black;
+                border-bottom: 2px solid $primary;
+                animation: active-link 2s forwards;
+            }
+        }
+        .active {
+            animation: active-link 2s forwards; // border-bottom: 2px solid $primary;
+            font-weight: bold;
+        }
+    }
+    .body {
+        height: calc(100vh - 80px); // border: 1px solid $black;
+        margin-top: 10px;
+    }
+}
+
+@keyframes active-link {
+    0% {
+        border-bottom: 2px solid transparent;
+    }
+    100% {
+        border-bottom: 2px solid $primary;
+    }
+}

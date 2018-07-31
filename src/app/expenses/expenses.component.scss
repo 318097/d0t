@@ -1,0 +1,17 @@
+.active {
+    color: rgb(35, 107, 26);
+    background: lightgrey;
+}
+
+.expense {
+    margin: 0;
+    padding: 0;
+    span {
+        display: inline-block;
+        width: 32%; // border: 1px solid green;
+    }
+}
+
+#months {
+    flex-wrap: wrap;
+}
