@@ -52,7 +52,7 @@ export class ExpensesComponent implements OnInit {
   findTotal() {
     this.totalExpense = 0;
     this.monthlyExpense.forEach((expense: any) => {
-      this.totalExpense += expense.amount;
+      this.totalExpense += parseInt(expense.amount);
     });
   }
   getExpenseTypes() {

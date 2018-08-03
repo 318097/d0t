@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 const routes = {
-  'expense': 'exp/',
+  'expense': 'exp',
   'getExpenseTypes': 'exp_types',
 };
 
@@ -14,7 +14,7 @@ export class ExpenseService {
   constructor(private http: HttpClient) { }
 
   getExpenseByMonth(month: any) {
-    return this.http.get(routes.expense + month);
+    return this.http.get(`${routes.expense}/${month}`);
   }
   getExpenseTypes() {
     return this.http.get(routes.getExpenseTypes);
@@ -26,6 +26,6 @@ export class ExpenseService {
     return this.http.put(routes.expense, data);
   }
   deleteExpense(id) {
-    return this.http.delete(`${routes.expense}${id}`);
+    return this.http.delete(`${routes.expense}/${id}`);
   }
 }

@@ -3,7 +3,6 @@ import { HttpClient } from '@angular/common/http';
 
 const routes = {
   'post': 'post',
-  'getPostById': 'post/',
 };
 
 @Injectable({
@@ -17,7 +16,7 @@ export class PostService {
     return this.http.get(routes.post);
   }
   getPostById(id) {
-    return this.http.get(routes.getPostById + id);
+    return this.http.get(`${routes.post}/${id}`);
   }
   addPost(data) {
     return this.http.post(routes.post, data);
@@ -26,6 +25,6 @@ export class PostService {
     return this.http.put(routes.post, data);
   }
   deletePost(id) {
-    return this.http.delete(routes.post + id);
+    return this.http.delete(`${routes.post}/${id}`);
   }
 }
