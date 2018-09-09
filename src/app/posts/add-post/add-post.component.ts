@@ -56,7 +56,7 @@ export class AddPostComponent implements OnInit {
   getPostById(id: number) {
     this.postService.getPostById(this.type, id)
       .subscribe((response: any) => {
-        if (this.type === 'post') {
+        if (this.type === 'POST') {
           this.post = response.post;
         } else {
           this.post = response.inshorts;
