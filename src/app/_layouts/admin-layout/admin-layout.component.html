@@ -1,0 +1,20 @@
+<div class="root">
+    <header fxLayout="row" fxLayoutAlign="space-between start">
+        <div fxFlex="15" routerLink="/home" class="logo">BrainBox.in</div>
+        <div>
+            <button class="menu-button" fxFlex="0 0 auto" fxHide fxShow.xs (click)="showMenu = !showMenu"> Menu</button>
+            <button class="menu-button" (click)="logout()">Logout</button>
+        </div>
+    </header>
+    <div class="body" fxLayout="row" fxLayout.xs="column">
+        <nav fxFlex="15" fxFlex.xs="" [fxShow.xs]="showMenu">
+            <a routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" routerLink="/admin">Dashboard</a>
+            <a routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" routerLink="/admin/articles">Articles</a>
+            <a routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" routerLink="/admin/expenses">Expenses</a>
+            <a routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" routerLink="/admin/posts/add">Add Post</a>
+        </nav>
+        <main fxFlex="85">
+            <router-outlet></router-outlet>
+        </main>
+    </div>
+</div>

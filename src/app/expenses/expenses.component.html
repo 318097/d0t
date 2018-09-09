@@ -1,13 +1,10 @@
 <div class="m-container">
-  <h2>Expenses</h2>
-  <div class="section" id="months" fxLayout="row">
-    <div fxFlex="60px" *ngFor="let month of months" class="card m-card sm-card" [ngClass]="{ 'active' : month.id === currentMonth}"
-      (click)="getExpenseByMonth(month.id)">
+  <h1>Expenses</h1>
+  <div class="section" id="months" fxLayout="row wrap" fxLayoutAlign="center start">
+    <div fxFlex="0 0 auto" *ngFor="let month of months" class="chip" [ngClass]="{ 'active' : month.id === currentMonth}" (click)="getExpenseByMonth(month.id)">
       {{month.name}}
     </div>
   </div>
-
-  <hr>
   <h2>Current Month</h2>
   <div class="section" *ngIf="monthlyExpense.length > 0">
     <p class="expense" *ngFor="let expense of monthlyExpense">
@@ -16,39 +13,40 @@
       <span>{{formatDate(expense.created_at)}}</span>
     </p>
     <p class="expense" style="font-weight: bold">Total : Rs/- {{totalExpense}}</p>
+    <br>
   </div>
   <div class="section" *ngIf="monthlyExpense.length === 0">
     <p>No Expense.</p>
   </div>
-
-  <hr>
-
   <div class="section">
-    <form autocomplete="off" (ngSubmit)="addExpense()">
+    <form class="ui form" autocomplete="off" (ngSubmit)="addExpense()">
 
-      <div class="form-group">
-        <label for="amount">Amount</label>
-        <input type="text" class="form-control" [(ngModel)]="amount" name="amount" placeholder="Amount">
+      <div class="field">
+        <!-- <label for="amount">Amount</label> -->
+        <input type="text" class="ui input" [(ngModel)]="amount" name="amount" placeholder="Amount">
       </div>
 
-      <div class="form-group">
-        <label for="type">Expense Type</label>
+      <div class="field">
+        <label>Expense Type</label>
         <div *ngFor="let type of expenseTypes">
-          <input type="radio" [value]="type.id" name="typeId" [(ngModel)]="typeId"> {{type.name}}
+          <div class="ui radio checkbox">
+            <input type="radio" [value]="type.id" name="typeId" [(ngModel)]="typeId" [id]="type.id">
+            <label [for]="type.id">&nbsp;{{type.name}}</label>
+          </div>
         </div>
-        <div>
-          <input type="radio" value="0" name="typeId" [(ngModel)]="typeId"> Other
+        <div class="ui radio checkbox">
+          <input type="radio" value="0" name="typeId" [(ngModel)]="typeId" id="0">
+          <label [for]="0">&nbsp;New</label>
         </div>
       </div>
 
-      <div *ngIf="showAddField" class="form-group">
+      <div *ngIf="typeId == 0" class="field">
         <label for="field">New Field</label>
-        <input type="text" class="form-control" name="field" [(ngModel)]="name" placeholder="New Field">
+        <input type="text" class="ui input" name="field" [(ngModel)]="name" placeholder="New...">
       </div>
 
       <div>
-        <input type="submit" class="m-button btn" value="Add">
-        <button *ngIf="!showAddField" class="m-button btn" (click)="showAddField = true">Add Field</button>
+        <input type="submit" class="m-button ui button" value="Add">
       </div>
     </form>
   </div>

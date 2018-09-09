@@ -8,11 +8,10 @@ import { ExpenseService } from './expense.service';
 })
 export class ExpensesComponent implements OnInit {
   amount: number;
-  typeId = 0;
+  typeId: number;
   name: string;
 
   currentMonth: number;
-  showAddField = false;
   months = [
     { name: 'Jan', id: 1 },
     { name: 'Feb', id: 2 },

@@ -1,3 +1,16 @@
 <div class="m-container">
-  <h2>{{currentPost.title}}</h2>
+  <div class="section">
+    <button class="ui button m-button" routerLink="/posts">Back</button>
+    <button class="ui button m-button" routerLink="/admin/posts/edit/post/{{currentPost.id}}">Edit Post</button>
+  </div>
+  <article>
+    <h1>{{currentPost.title}}</h1>
+    <span>{{currentPost.created_at}}</span>
+    <h3>Post #{{currentPost.id}}</h3>
+    <div class="body" [innerHTML]="currentPost.content | safeHtml"></div>
+  </article>
+  <div class="section">
+    <button class="ui button m-button" routerLink="/posts/{{id - 1}}">Previous</button>
+    <button class="ui button m-button" routerLink="/posts/{{id + 1}}">Next</button>
+  </div>
 </div>

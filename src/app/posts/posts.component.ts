@@ -15,7 +15,7 @@ export class PostsComponent implements OnInit {
   }
 
   getAllPosts() {
-    this.postService.getAllPosts()
+    this.postService.getAllPosts('POST')
       .subscribe((response: any) => {
         this.postList = response.posts;
         // console.log(response);
@@ -23,7 +23,7 @@ export class PostsComponent implements OnInit {
   }
 
   deletePost(id: number) {
-    this.postService.deletePost(id)
+    this.postService.deletePost('POST', id)
       .subscribe((response: any) => {
       });
   }

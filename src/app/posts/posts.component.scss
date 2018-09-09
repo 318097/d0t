@@ -1,0 +1,13 @@
+.card {
+    position: relative;
+}
+
+.post-title {
+    position: absolute;
+    top: 50%; // text-align: center;
+    // background: green;
+    display: block;
+    width: 90%;
+    margin: 0 auto;
+    transform: translate(0, -50%);
+}

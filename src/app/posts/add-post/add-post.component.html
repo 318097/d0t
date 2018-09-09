@@ -1,22 +1,42 @@
-<!-- <div class="container" [innerHTML]="post">
-    {{post}}
-</div> -->
-
-<div class="m-container">
-    <div class="section">
-        <h2>New Post</h2>
-        <form (ngSubmit)="addPost()" autocomplete="off">
-            <div class="form-group">
+<div class="m-container" fxLayout="row">
+    <div fxFlex="60" fxFlex.xs="100" class="section">
+        <h2>{{pageTitle}}</h2>
+        <form class="ui form" (ngSubmit)="isEdit ? updatePost() : addPost()" autocomplete="off">
+            <div class="field">
+                <label for="post-type">Type</label>
+                <select name="type" [(ngModel)]="type">
+                    <option value="POST">Post</option>
+                    <option value="INSHORTS">Inshorts</option>
+                </select>
+            </div>
+            <div *ngIf="type == 'INSHORTS'" class="field">
+                <label>Category</label>
+                <div *ngFor="let inshort of inshortTypes">
+                    <input type="radio" [name]="'inshort' + post.type_id" [(ngModel)]="post.type_id" [value]="inshort.id"><label>&nbsp;{{inshort.name}}</label>&nbsp;&nbsp;&nbsp;
+                </div>
+            </div>
+            <div class="field">
                 <label for="post-title">Title</label>
                 <input type="text" class="form-control" id="post-title" placeholder="Title" [(ngModel)]="post.title" name="title">
             </div>
-            <div class="form-group">
+            <div class="field">
                 <label for="post-content">Content</label>
-                <textarea rows="5" class="form-control" id="post-content" placeholder="Content" [(ngModel)]="post.content" name="content"></textarea>
+                <textarea style="height: 30vh;" class="form-control" id="post-content" placeholder="Content" [(ngModel)]="post.content" name="content"></textarea>
             </div>
-            <input type="submit" class="btn btn-primary m-button" value="Submit">
-            <button routerLink="/posts" class="btn btn-primary m-button">Cancel</button>
-
+            <input type="submit" class="ui button m-button" [value]="isEdit ? 'Update' : 'Submit'">
+            <button routerLink="/posts" class="ui button m-button">Cancel</button>
         </form>
+        <br> {{post | json}}
+    </div>
+
+    <div fxHide.xs fxFlex="40" class="preview">
+        <article>
+            <h1>{{post.title}}</h1>
+            <span>
+                {{post.created_at}}
+            </span>
+            <h3>Post #{{post.id}}</h3>
+            <div class="body" [innerHTML]="post.content | safeHtml"></div>
+        </article>
     </div>
 </div>

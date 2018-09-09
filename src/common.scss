@@ -1,57 +1,87 @@
-h1 {
-    // font-size: 26px;
-}
-
-h2 {
-    font-size: 20px;
-    font-weight: bold;
-    text-decoration: line-through;
-}
-
-h3 {
-    font-size: 18px;
-}
-
-h4 {
-    font-size: 16px;
-}
-
-h5 {
-    font-size: 14px;
-}
-
+@import "variables";
 .m-container {
     padding: 20px;
-    width: 80%;
+    width: 100%;
     min-height: 100%;
     margin: 0 auto;
-    border: 1px solid rgb(161, 161, 161);
+    background: $app-background; // border: 1px solid rgb(161, 161, 161);
     .section {
-        margin: 10px 0;
-        padding: 5px 0;
+        margin: 7px 0;
+        padding: 10px 20px;
     }
 }
 
 .m-card {
-    height: 200px;
-    width: 24%;
+    height: 160px;
+    position: relative; // width: 24%;
     margin: 10px;
     text-align: center;
     padding: 10px;
+    background: #fff;
     cursor: pointer;
+    &:hover {
+        background: rgba(230, 230, 230, 0.6);
+    }
 }
 
-.m-card:hover {
-    background: rgba(241, 241, 241, 0.6);
-}
-
-.m-card.sm-card {
+.chip {
     height: auto;
     width: auto;
     margin: 3px;
-    padding: 5px;
+    cursor: pointer;
+    background: $primary;
+    border-radius: 10px;
+    padding: 7px 10px;
+    color: $white;
 }
 
 .m-button {
     margin: 0 5px;
+    cursor: pointer;
+}
+
+// -------------------
+.success {
+    color: green;
+    font-weight: bold;
+    font-style: italic;
+}
+
+.m-icon {
+    cursor: pointer;
+    border-radius: 50%;
+    display: inline-block; // padding: 5px;
+    // &:hover {
+    //     background: lightgrey;
+    // }
+}
+
+article {
+    .body {
+        font-size: 16px;
+    }
+}
+
+/* width */
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Handle */
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+/* Handle on hover */
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
 }

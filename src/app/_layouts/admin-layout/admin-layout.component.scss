@@ -1,0 +1,66 @@
+@import "src/variables";
+.root {
+    header {
+        height: 70px;
+        background: $header;
+        width: 100%;
+        display: block;
+        .logo {
+            font-size: 2.5em;
+            font-weight: bold;
+            position: relative;
+            top: 10px;
+            left: 15px;
+            cursor: pointer;
+            transition: 1s;
+            &:hover {
+                color: $primary;
+            }
+        }
+        .menu-button {
+            padding: 5px;
+            vertical-align: center;
+            position: relative;
+            top: 15px;
+            background: rgb(238, 237, 237);
+            margin: 0 10px;
+        }
+    }
+    .body {
+        height: calc(100vh - 70px);
+        nav {
+            background: $light-grey;
+            padding: 5px;
+            width: 100%;
+            height: 100%; // @media(max-width: 400px) {
+            //     flex: 1 1 50%;
+            //     max-width: 50%;
+            //     background: orange;
+            // }
+            a {
+                background: $header;
+                padding: 15px 9px;
+                color: rgb(44, 44, 44);
+                margin: 5px;
+                display: block;
+                &:hover {
+                    background: $primary;
+                    color: $white;
+                }
+            }
+            .active {
+                background: $primary;
+                color: $white;
+            }
+        }
+        main {}
+    }
+}
+
+// @media (max-width: 400px) {
+//     nav {
+//         background: orange;
+//         position: relative;
+//         z-index: 2;
+//     }
+// }

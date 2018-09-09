@@ -1,6 +1,7 @@
+// chip is active
 .active {
-    color: rgb(35, 107, 26);
-    background: lightgrey;
+    color: white;
+    background: tomato;
 }
 
 .expense {
@@ -12,6 +13,12 @@
     }
 }
 
-#months {
-    flex-wrap: wrap;
+div.field {
+    width: 20%;
+}
+
+@media screen and(max-width: 599px) {
+    div.field {
+        width: 50%;
+    }
 }

@@ -1,0 +1,24 @@
+@import "src/variables";
+.login-form {
+    // border: 1px solid black;
+    width: 300px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 450px;
+    .input-container {
+        padding: 5px;
+        width: 90%;
+        margin: 10px auto;
+        input {
+            width: 100%;
+            padding: 7px;
+            border: none;
+            border-bottom: 2px solid $primary;
+        }
+        button {
+            margin: 20px auto;
+        }
+    }
+}

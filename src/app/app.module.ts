@@ -9,10 +9,17 @@ import { ExpensesComponent } from './expenses/expenses.component';
 import { PostsComponent } from './posts/posts.component';
 import { AddPostComponent } from './posts/add-post/add-post.component';
 import { ApiPrefixInterceptor } from './core/http/api-prefix.interceptor';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ViewPostComponent } from './posts/view-post/view-post.component';
 import { DiaryComponent } from './diary/diary.component';
-
+import { SafeHtmlPipe } from './shared/safe-html.pipe';
+import { InshortsComponent } from './inshorts/inshorts.component';
+import { AdminLayoutComponent } from './_layouts/admin-layout/admin-layout.component';
+import { PublicLayoutComponent } from './_layouts/public-layout/public-layout.component';
+import { AdminComponent } from './admin/admin.component';
+import { LoginComponent } from './login/login.component';
+import { ArticlesComponent } from './admin/articles/articles.component';
+// import { NgxEditorModule } from 'ngx-editor';
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,14 +28,23 @@ import { DiaryComponent } from './diary/diary.component';
     PostsComponent,
     AddPostComponent,
     ViewPostComponent,
-    DiaryComponent
+    DiaryComponent,
+    SafeHtmlPipe,
+    InshortsComponent,
+    AdminLayoutComponent,
+    PublicLayoutComponent,
+    AdminComponent,
+    LoginComponent,
+    ArticlesComponent,
   ],
   imports: [
     BrowserModule,
     FlexLayoutModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule,
+    // NgxEditorModule,
   ],
   providers: [
     // use the http interceptors to handle all outgoing requests.

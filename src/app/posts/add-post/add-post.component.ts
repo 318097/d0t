@@ -11,64 +11,78 @@ export interface Post {
 @Component({
   selector: 'app-add-post',
   templateUrl: './add-post.component.html',
-  styleUrls: ['./add-post.component.css']
+  styleUrls: ['./add-post.component.scss']
 })
 export class AddPostComponent implements OnInit {
-  currentPost: any = '<h1 class="red">hello</h1><p><b>ljkasdfjlkkdf</b></p>';
   id: number;
-  isEdit = false;
+  isEdit: boolean;
+  pageTitle: string;
   // post: Post;
   post: any = {};
-  pageTitle: string;
-
+  type: string;
+  inshortTypes: any = [
+    { 'name': 'Inshort', 'id': 1 },
+    { 'name': 'Quote', 'id': 2 }
+  ];
+  // url: string;
+  // typeId: any;
   constructor(
     private postService: PostService,
     private activatedRoute: ActivatedRoute,
     private router: Router
-
   ) { }
 
   ngOnInit() {
-    console.log(this.router);
-    console.log(this.activatedRoute);
-    this.isEdit = this.router.url === '/posts/add' ? false : true;
+    // console.log(this.router);
+    // console.log(this.activatedRoute);
+    this.isEdit = this.router.url === '/admin/posts/add' ? false : true;
+
     if (this.isEdit) {
       this.pageTitle = 'Edit Post';
-      this.id = this.activatedRoute.snapshot.params.id;
-      // this.activatedRoute.params
-      //   .pipe(take(1))
-      //   .subscribe(params => {
-      //     // console.log('edit Post param id :: ', params);
-      //     this.id = params.id;
-      //     // this.getPostById(this.id);
-      //   });
+      // this.id = this.activatedRoute.snapshot.params.id;
+      this.activatedRoute.params
+        .pipe(take(1))
+        .subscribe(params => {
+          // console.log('edit Post param id :: ', params);
+          this.id = params.id;
+          this.type = params.type.toUpperCase();
+          this.getPostById(this.id);
+        });
     } else {
       this.pageTitle = 'New Post';
     }
-
   }
 
   getPostById(id: number) {
-    this.postService.getPostById(id)
+    this.postService.getPostById(this.type, id)
       .subscribe((response: any) => {
-        this.currentPost = response;
+        if (this.type === 'post') {
+          this.post = response.post;
+        } else {
+          this.post = response.inshorts;
+        }
       });
   }
 
   addPost() {
     const data = this.post;
-    this.postService.addPost(data)
+    this.postService.addPost(this.type, data)
       .subscribe((response: any) => {
         // this.expenseTypes = response;
-        this.router.navigate(['posts']);
+        this.router.navigate(['/posts']);
       });
   }
 
   updatePost() {
-    const data = {};
-    this.postService.updatePost(data)
+    const data = {
+      id: this.post.id,
+      title: this.post.title,
+      content: this.post.content
+    };
+
+    this.postService.updatePost(this.type, this.id, data)
       .subscribe((response: any) => {
-        // this.expenseTypes = response;
+        this.router.navigate(['/posts']);
       });
   }
 

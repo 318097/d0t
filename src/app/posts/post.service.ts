@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 const routes = {
-  'post': 'post',
+  'POST': 'post',
+  'INSHORTS': 'inshorts'
 };
 
 @Injectable({
@@ -12,19 +13,23 @@ export class PostService {
 
   constructor(private http: HttpClient) { }
 
-  getAllPosts() {
-    return this.http.get(routes.post);
+  getAllPosts(type: any) {
+    return this.http.get(routes[type]);
   }
-  getPostById(id) {
-    return this.http.get(`${routes.post}/${id}`);
+
+  getPostById(type: string, id: any) {
+    return this.http.get(`${routes[type]}/${id}`);
   }
-  addPost(data) {
-    return this.http.post(routes.post, data);
+
+  addPost(type: string, data: any) {
+    return this.http.post(routes[type], data);
   }
-  updatePost(data) {
-    return this.http.put(routes.post, data);
+
+  updatePost(type: string, id: any, data: any) {
+    return this.http.put(`${routes[type]}/${id}`, data);
   }
-  deletePost(id) {
-    return this.http.delete(`${routes.post}/${id}`);
+
+  deletePost(type: string, id: any) {
+    return this.http.delete(`${routes[type]}/${id}`);
   }
 }

@@ -1,11 +1,7 @@
 <div class="m-container">
-  <div class="section">
-    <button class="btn" routerLink="/admin/posts/add">Add Post</button>
-  </div>
-  <hr>
-  <div class="section" fxLayout="row">
-    <div class="card m-card" *ngFor="let post of postList">
-      <h3 [routerLink]="['/posts/', post.id]">{{post.title}}</h3>
+  <div class="section" fxLayout="row wrap" fxLayoutAlign="center start">
+    <div fxFlex="240px" [routerLink]="['/posts/', post.id]" class="m-card" *ngFor="let post of postList">
+      <h3 class="post-title">{{post.title}}</h3>
     </div>
   </div>
 </div>
