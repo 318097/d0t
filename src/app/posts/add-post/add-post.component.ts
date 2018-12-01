@@ -7,7 +7,6 @@ export interface Post {
   title: string;
   content: string;
 }
-
 @Component({
   selector: 'app-add-post',
   templateUrl: './add-post.component.html',
@@ -33,9 +32,9 @@ export class AddPostComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    // console.log(this.router);
-    // console.log(this.activatedRoute);
-    this.isEdit = this.router.url === '/admin/posts/add' ? false : true;
+    console.log(this.router);
+    console.log(this.activatedRoute);
+    this.isEdit = new RegExp('/admin/posts/add').test(this.router.url) ? false : true;
 
     if (this.isEdit) {
       this.pageTitle = 'Edit Post';
@@ -49,6 +48,12 @@ export class AddPostComponent implements OnInit {
           this.getPostById(this.id);
         });
     } else {
+      this.activatedRoute['queryParams'].subscribe((params: any) => {
+        this.type = params['type'];
+      });
+      if (this.type === 'INSHORTS') {
+        this.post['type_id'] = 1;
+      }
       this.pageTitle = 'New Post';
     }
   }
@@ -68,8 +73,7 @@ export class AddPostComponent implements OnInit {
     const data = this.post;
     this.postService.addPost(this.type, data)
       .subscribe((response: any) => {
-        // this.expenseTypes = response;
-        this.router.navigate(['/posts']);
+        this.router.navigate(['/admin/posts/add'], { queryParams: { type: this.type } });
       });
   }
 
@@ -82,7 +86,7 @@ export class AddPostComponent implements OnInit {
 
     this.postService.updatePost(this.type, this.id, data)
       .subscribe((response: any) => {
-        this.router.navigate(['/posts']);
+        this.router.navigate(['/admin/articles']);
       });
   }
 

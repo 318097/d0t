@@ -1,7 +1,8 @@
 <div class="m-container">
   <h1>Expenses</h1>
   <div class="section" id="months" fxLayout="row wrap" fxLayoutAlign="center start">
-    <div fxFlex="0 0 auto" *ngFor="let month of months" class="chip" [ngClass]="{ 'active' : month.id === currentMonth}" (click)="getExpenseByMonth(month.id)">
+    <div fxFlex="0 0 auto" *ngFor="let month of months" class="chip" [ngClass]="{ 'active' : month.id === currentMonth}"
+      (click)="getExpenseByMonth(month.id)">
       {{month.name}}
     </div>
   </div>
@@ -46,7 +47,7 @@
       </div>
 
       <div>
-        <input type="submit" class="m-button ui button" value="Add">
+        <input type="submit" class="m-button ui button" [disabled]="disableControls" value="Add">
       </div>
     </form>
   </div>

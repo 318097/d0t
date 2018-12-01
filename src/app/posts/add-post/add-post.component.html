@@ -17,14 +17,16 @@
             </div>
             <div class="field">
                 <label for="post-title">Title</label>
-                <input type="text" class="form-control" id="post-title" placeholder="Title" [(ngModel)]="post.title" name="title">
+                <input type="text" class="form-control" id="post-title" placeholder="Title" [(ngModel)]="post.title"
+                    name="title">
             </div>
             <div class="field">
                 <label for="post-content">Content</label>
-                <textarea style="height: 30vh;" class="form-control" id="post-content" placeholder="Content" [(ngModel)]="post.content" name="content"></textarea>
+                <textarea style="height: 30vh;" class="form-control" id="post-content" placeholder="Content"
+                    [(ngModel)]="post.content" name="content"></textarea>
             </div>
             <input type="submit" class="ui button m-button" [value]="isEdit ? 'Update' : 'Submit'">
-            <button routerLink="/posts" class="ui button m-button">Cancel</button>
+            <button routerLink="/admin/articles" class="ui button m-button">Cancel</button>
         </form>
         <br> {{post | json}}
     </div>

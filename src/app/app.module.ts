@@ -20,6 +20,8 @@ import { AdminComponent } from './admin/admin.component';
 import { LoginComponent } from './login/login.component';
 import { ArticlesComponent } from './admin/articles/articles.component';
 // import { NgxEditorModule } from 'ngx-editor';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from './material.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,6 +46,8 @@ import { ArticlesComponent } from './admin/articles/articles.component';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    MaterialModule,
+    BrowserAnimationsModule
     // NgxEditorModule,
   ],
   providers: [

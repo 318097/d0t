@@ -10,7 +10,7 @@ export class ExpensesComponent implements OnInit {
   amount: number;
   typeId: number;
   name: string;
-
+  disableControls = false;
   currentMonth: number;
   months = [
     { name: 'Jan', id: 1 },
@@ -51,7 +51,7 @@ export class ExpensesComponent implements OnInit {
   findTotal() {
     this.totalExpense = 0;
     this.monthlyExpense.forEach((expense: any) => {
-      this.totalExpense += parseInt(expense.amount);
+      this.totalExpense += parseInt(expense.amount, 10);
     });
   }
   getExpenseTypes() {
@@ -62,6 +62,7 @@ export class ExpensesComponent implements OnInit {
   }
 
   addExpense() {
+    this.disableControls = true;
     const data = {
       amount: this.amount,
       name: this.name,
@@ -70,6 +71,7 @@ export class ExpensesComponent implements OnInit {
     };
     this.expenseSerivce.addExpense(data)
       .subscribe((response: any) => {
+        this.disableControls = false;
         this.getExpenseByMonth(this.currentMonth);
       });
   }
@@ -91,7 +93,7 @@ export class ExpensesComponent implements OnInit {
   }
 
   formatDate(date: any) {
-    let x = date.split(' ')[0].split('-');
+    const x = date.split(' ')[0].split('-');
     return `${x[2]}/${x[1]}`;
   }
 

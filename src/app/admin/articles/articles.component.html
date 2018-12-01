@@ -1,13 +1,37 @@
 <div class="m-container">
   <div class="section" fxLayout="row" fxLayoutAlign="space-between start">
-    <button class="ui button" routerLink="/admin/posts/add">Add</button>
     <div class="ui buttons">
-      <button class="ui button" (click)="changeDisplayType('POST')">Posts</button>
-      <button class="ui button" (click)="changeDisplayType('INSHORTS')">Inshorts</button>
+      <button
+        class="ui button"
+        routerLink="/admin/posts/add"
+        [queryParams]="{ type: 'POST' }"
+      >
+        Add Post
+      </button>
+      <button
+        class="ui button"
+        routerLink="/admin/posts/add"
+        [queryParams]="{ type: 'INSHORTS' }"
+      >
+        Add Inshort
+      </button>
+    </div>
+    <div class="ui buttons">
+      <button class="ui button" (click)="changeDisplayType('POST')">
+        Posts
+      </button>
+      <button class="ui button" (click)="changeDisplayType('INSHORTS')">
+        Inshorts
+      </button>
     </div>
   </div>
 
-  <div *ngIf="displayType === 'POST'" class="section" fxLayout="row wrap" fxLayoutAlign="center start">
+  <div
+    *ngIf="displayType === 'POST'"
+    class="section"
+    fxLayout="row wrap"
+    fxLayoutAlign="center start"
+  >
     <table class="ui celled table">
       <thead>
         <tr>
@@ -15,20 +39,27 @@
           <td>Title</td>
           <td>Content</td>
           <td>Created On</td>
-          <td>Updated On</td>
           <td></td>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let post of postList">
-          <td>{{post.id}}</td>
-          <td>{{post.title}}</td>
-          <td>{{post.content}}</td>
-          <td>{{post.created_at}}</td>
-          <td>{{post.updated_at}}</td>
+          <td>{{ post.id }}</td>
+          <td>{{ post.title }}</td>
           <td>
-            <span class="m-icon" routerLink="/admin/posts/edit/post/{{post.id}}">
-              <i class="fas fa-caret-right"></i>
+            {{
+              post.content.length > 100
+                ? post.content.substr(0, 100) + '..'
+                : post.content
+            }}
+          </td>
+          <td>{{ post.created_at }}</td>
+          <td>
+            <span
+              class="m-icon"
+              routerLink="/admin/posts/edit/post/{{post.id}}"
+            >
+              <i class="material-icons"> navigate_next </i>
             </span>
           </td>
         </tr>
@@ -36,7 +67,12 @@
     </table>
   </div>
 
-  <div *ngIf="displayType === 'INSHORTS'" class="section" fxLayout="row wrap" fxLayoutAlign="center start">
+  <div
+    *ngIf="displayType === 'INSHORTS'"
+    class="section"
+    fxLayout="row wrap"
+    fxLayoutAlign="center start"
+  >
     <table class="ui celled table">
       <thead>
         <tr>
@@ -50,13 +86,16 @@
       </thead>
       <tbody>
         <tr *ngFor="let inshort of inshortsList">
-          <td>{{inshort.id}}</td>
-          <td>{{inshort.title}}</td>
-          <td>{{inshort.content}}</td>
-          <td>{{inshort.created_at}}</td>
-          <td>{{inshort.updated_at}}</td>
+          <td>{{ inshort.id }}</td>
+          <td>{{ inshort.title }}</td>
+          <td>{{ inshort.content }}</td>
+          <td>{{ inshort.created_at }}</td>
+          <td>{{ inshort.updated_at }}</td>
           <td>
-            <span class="m-icon" routerLink="/admin/posts/edit/inshorts/{{inshort.id}}">
+            <span
+              class="m-icon"
+              routerLink="/admin/posts/edit/inshorts/{{inshort.id}}"
+            >
               <i class="fas fa-caret-right"></i>
             </span>
           </td>
