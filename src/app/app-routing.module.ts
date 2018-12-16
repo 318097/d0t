@@ -13,6 +13,7 @@ import { AdminComponent } from './admin/admin.component';
 import { LoginComponent } from './login/login.component';
 import { AuthenticationGuard } from './core/authentication/authentication.guard';
 import { ArticlesComponent } from './admin/articles/articles.component';
+import { ResumeComponent } from './resume/resume.component';
 
 const appRoutes: Routes = [
   {
@@ -47,6 +48,7 @@ const appRoutes: Routes = [
     ]
   },
   { path: 'login', component: LoginComponent },
+  { path: 'resume', component: ResumeComponent },
   { path: '**', redirectTo: 'home', pathMatch: 'full' }
 ];
 

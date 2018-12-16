@@ -22,6 +22,7 @@ import { ArticlesComponent } from './admin/articles/articles.component';
 // import { NgxEditorModule } from 'ngx-editor';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
+import { ResumeComponent } from './resume/resume.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,6 +39,7 @@ import { MaterialModule } from './material.module';
     AdminComponent,
     LoginComponent,
     ArticlesComponent,
+    ResumeComponent,
   ],
   imports: [
     BrowserModule,

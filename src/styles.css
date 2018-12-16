@@ -1,77 +1,71 @@
-@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
 @font-face {
-    font-family: Calibri;
-    src: url(./assets/fonts/Calibri.ttf);
+  font-family: Calibri;
+  src: url(./assets/fonts/Calibri.ttf);
 }
 
 @font-face {
-    font-family: Poppins;
-    src: url('./assets/fonts/Poppins-ExtraLight.ttf');
+  font-family: Poppins;
+  src: url('./assets/fonts/Poppins-ExtraLight.ttf');
 }
 
 @font-face {
-    font-family: Font1;
-    src: url('./assets/fonts/GloriaHallelujah.ttf');
+  font-family: Font1;
+  src: url('./assets/fonts/GloriaHallelujah.ttf');
 }
 
 @font-face {
-    font-family: Font5;
-    src: url('./assets/fonts/Raleway-Light.ttf');
-}
-
-/* @font-face {
-    font-family: Font2;
-    src: url('./assets/fonts/IndieFlower.ttf');
+  font-family: Font5;
+  src: url('./assets/fonts/Raleway-Light.ttf');
 }
 
 @font-face {
-    font-family: Font3;
-    src: url('./assets/fonts/Jua-Regular.ttf');
+  font-family: test;
+  src: url('./assets/fonts/Jua-Regular.ttf');
 }
-
 @font-face {
-    font-family: Font4;
-    src: url('./assets/fonts/ShadowsIntoLight.ttf');
-} */
+  font-family: Barrio;
+  src: url('./assets/fonts/Barrio-Regular.ttf');
+}
 
 html,
 body {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    height: 100%;
-    font-size: 16px !important;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  font-size: 16px;
+  font-family: test;
 }
 
 * {
-    font-family: Font5 !important;
-    outline: none;
-    box-sizing: border-box;
+  outline: none;
+  box-sizing: border-box;
 }
 
 h1 {
-    font-size: 24px;
+  font-size: 24px;
 }
 
 h2 {
-    font-size: 20px;
-    font-weight: bold;
-    text-decoration: line-through;
+  font-size: 20px;
+  font-weight: bold;
+  text-decoration: line-through;
 }
 
 h3 {
-    font-size: 18px;
+  font-size: 18px;
 }
 
 h4 {
-    font-size: 16px;
+  font-size: 16px;
 }
 
 h5 {
-    font-size: 14px;
+  font-size: 14px;
 }
 
 p,
 label {
-    font-size: 16px;
+  font-size: 16px;
 }

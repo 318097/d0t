@@ -1,0 +1,45 @@
+h1,
+h2,
+h3,
+h4,
+h5 {
+  text-align: center;
+}
+.relative {
+  position: relative;
+  .center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+.absolute {
+  position: absolute;
+}
+.center {
+  text-align: center;
+}
+.left {
+  text-align: left;
+}
+.test {
+  border: 1px solid rgb(53, 53, 53);
+}
+.b {
+  font-weight: bold;
+}
+.p-1 {
+  padding: 5px;
+}
+@keyframes blink {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}

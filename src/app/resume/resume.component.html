@@ -1,0 +1,144 @@
+<div *ngIf="loading" class="loader relative">
+  <img class="center" src="assets/loaders/Gear-5.7s-200px.svg" />
+</div>
+<div *ngIf="!loading" class="resume-container relative" fxLayout="column">
+  <div fxFlex="95" fxLayout="row">
+    <div class="basic" fxFlex="13">
+      <div class="profile-image">
+        <img src="assets/profile.jpeg" alt="Profile Image" />
+      </div>
+      <div class="relative" style="margin-bottom: 30px;margin-top: 10px;">
+        <h2 class="name relative">{{ profile['basic'].name }}</h2>
+        <span class="absolute profession">
+          {{ '<' + profile['basic'].profession + '/>' }}
+        </span>
+      </div>
+      <p>
+        <span class="icon"
+          ><i class="material-icons"> calendar_today </i>
+        </span>
+        {{ formatDOB(profile['basic'].dob) }}
+      </p>
+      <p>
+        <span class="icon"> <i class="material-icons"> email </i></span>
+        {{ profile['basic'].email }}
+      </p>
+      <p>
+        <span class="icon"> <i class="material-icons"> call </i></span>
+        {{ formatMobileNo(profile['basic'].mobile) }}
+      </p>
+      <p>
+        <span class="icon"> <i class="material-icons"> home </i></span>
+        {{ profile['basic'].address_1 }}<br />
+        <span class="alignment">
+          {{ profile['basic'].address_2 }}<br />
+          {{ profile['basic'].city }} {{ profile['basic'].pincode }}<br />
+          {{ profile['basic'].state }}
+        </span>
+      </p>
+      <p>
+        <span class="icon"><i class="material-icons"> web </i> </span>
+        <a [href]="profile['basic'].website">
+          {{ profile['basic'].website }}
+        </a>
+      </p>
+      <hr />
+    </div>
+    <div class="about" fxFlex="78" fxLayout="column">
+      <!-- Education -->
+      <div class="edu">
+        <h1>
+          <i class="material-icons"> chevron_left </i>
+          <i class="material-icons"> hdr_weak </i>Education
+          <i class="material-icons" style="transform: rotate(180deg)">
+            hdr_weak
+          </i>
+          <i class="material-icons"> chevron_right </i>
+        </h1>
+        <div fxLayout fxLayoutAlign="space-between center">
+          <div class="card" fxFlex="32" *ngFor="let ed of profile['education']">
+            <h3>{{ ed.course }}</h3>
+            <p>{{ ed.university }}</p>
+            <p class="p-1">
+              <span class="icon"> <i class="material-icons"> school </i></span>
+              {{ ed.name }}
+            </p>
+            <p>
+              <span class="icon"> <i class="material-icons"> grade </i></span>
+              {{ ed.score }} <span>|</span>
+              <span class="icon">
+                <i class="material-icons"> date_range </i></span
+              >{{ ed.graduation_year }}
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Work -->
+      <h1>
+        <i class="material-icons"> chevron_left </i>
+        <i class="material-icons"> hdr_weak </i>Work
+        <i class="material-icons" style="transform: rotate(180deg)"
+          >hdr_weak
+        </i>
+        <i class="material-icons"> chevron_right </i>
+      </h1>
+      <div class="work">
+        <div class="timeline">
+          <div fxLayout *ngFor="let wo of profile['work']; let i = index">
+            <div class="time-container left">
+              <div class="card relative">
+                <h2>{{ wo.name }}</h2>
+                <h3>{{ wo.role }}</h3>
+                <p>
+                  {{ formatDate(wo.start_date) }} -
+                  {{ formatDate(wo.end_date) }}
+                </p>
+              </div>
+            </div>
+
+            <div class="time-container right">
+              <div class="card relative">
+                <h2>Projects</h2>
+                <ul>
+                  <li *ngFor="let project of wo['projects']">
+                    <h3 class="left">{{ project.name }}</h3>
+                    <p class="left">{{ project.description }}</p>
+                    <p class="left b">Tech : {{ project.stack.join(' | ') }}</p>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="skills" fxFlex="9">
+      <!-- Primary Skills -->
+      <hr />
+      <h1>Skills</h1>
+      <div class="item" *ngFor="let skill of profile['skills']">
+        {{ skill['name'] }}
+      </div>
+      <hr />
+
+      <!-- Secondary Skills -->
+      <h2>Other Skills</h2>
+      <div class="item" *ngFor="let skill of profile['secondary_skills']">
+        {{ skill['name'] }}
+      </div>
+    </div>
+  </div>
+  <div fxLayout fxLayoutAlign="end center" class="social" fxFlex="5">
+    <!-- Social Links -->
+    <span *ngFor="let plateform of profile['social']">
+      <a href="{{plateform.url}}" title="{{plateform.name}}">
+        <img
+          class="social-icons"
+          src="{{extractName(plateform.name)}}"
+          alt="{{plateform.name}}"
+        />
+      </a>
+    </span>
+  </div>
+</div>

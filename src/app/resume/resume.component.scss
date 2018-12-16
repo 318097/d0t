@@ -1,0 +1,159 @@
+::-webkit-scrollbar {
+  width: 0;
+}
+h1,
+h2,
+h3 {
+  font-family: 'Barrio';
+  text-decoration: none;
+}
+h1 {
+  text-decoration: overline;
+  font-weight: bold;
+  font-size: 28px;
+}
+.loader {
+  height: 100vh;
+  width: 100vw;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 10;
+  img {
+    height: 50px;
+    width: 50px;
+  }
+}
+.card {
+  padding: 20px 15px;
+  border-radius: 5px;
+  min-height: 175px;
+  background: url('../../assets/backgrounds/dust_scratches.png');
+  box-shadow: 5px 5px lightgrey;
+}
+.icon .material-icons {
+  font-size: 16px;
+  padding: 0 3px;
+  position: relative;
+  top: 3px;
+}
+.social-icons {
+  height: 40px;
+  width: 40px;
+  padding: 2px;
+  margin: 0 2px;
+}
+p {
+  margin: 0;
+  text-align: center;
+}
+.resume-container {
+  background: url('../../assets/backgrounds/funky-lines.png');
+  cursor: crosshair;
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  .basic {
+    background: url('../../assets/backgrounds/stardust.png');
+    color: white;
+    clip-path: polygon(0 0, 100% 0%, 85% 100%, 0% 100%);
+    z-index: 1;
+    padding: 5px 7px;
+    p {
+      margin: 5px;
+      text-align: left;
+    }
+    span.alignment {
+      position: relative;
+      left: 25px;
+    }
+    .profile-image {
+      img {
+        width: 100%;
+      }
+    }
+    .name::before {
+      content: '>';
+      position: absolute;
+      left: 10px;
+      animation: blink 1s infinite;
+    }
+    .profession {
+      bottom: -17px;
+      color: lightgrey;
+      left: 30px;
+      color: #ff8600;
+    }
+  }
+  .about {
+    .edu,
+    .work {
+      width: 90%;
+      margin: 20px auto;
+    }
+    .work {
+      overflow-y: auto;
+      .timeline {
+        height: 100%;
+        position: relative;
+        max-width: 90%;
+        margin: 0 auto;
+        &::after {
+          content: '';
+          position: absolute;
+          width: 2px;
+          top: 0;
+          bottom: 0;
+          border: 1px dotted #474e5d;
+          left: 50%;
+        }
+        .time-container {
+          padding: 10px 40px;
+          position: relative;
+          width: 50%;
+          display: inline-block;
+          h3 {
+            margin: 20px 0 5px 0;
+          }
+        }
+        .time-container.left::after {
+          content: '';
+          position: absolute;
+          height: 25px;
+          width: 25px;
+          top: 28px;
+          right: -14px;
+          background: rgb(194, 78, 0);
+          border-radius: 50%;
+          z-index: 2;
+        }
+        .time-container.right::before {
+          content: '';
+          position: absolute;
+          height: 13px;
+          width: 13px;
+          top: 27px;
+          left: -6px;
+          background: rgb(194, 78, 0);
+          border-radius: 50%;
+          z-index: 2;
+        }
+        .time-container.right {
+          margin-top: 70px;
+        }
+      }
+    }
+  }
+  .skills {
+    background: url('../../assets/backgrounds/wild_oliva.png');
+    clip-path: polygon(0 0, 100% 0%, 100% 98%, 10% 100%);
+    margin: 20px 15px;
+    color: #fff;
+    .item {
+      text-align: center;
+      background: rgb(41, 41, 41);
+      margin: 5px 5px 5px 19px;
+      padding: 7px 5px;
+    }
+  }
+}
