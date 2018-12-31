@@ -102,10 +102,10 @@ exports.profile = {
     { name: 'Php' }
   ],
   social: [
-    { name: 'GITHUB', url: 'https://github.com/318097' },
-    { name: 'FACEBOOK', url: 'https://www.facebook.com/ml.cr7' },
-    { name: 'LINKEDIN', url: 'https://www.linkedin.com/in/318097/' },
-    { name: 'HACKEREARTH', url: 'https://www.hackerearth.com/@318097' }
+    { name: 'GITHUB', url: 'https: //github.com/318097' },
+    { name: 'FACEBOOK', url: 'https: //www.facebook.com/ml.cr7' },
+    { name: 'LINKEDIN', url: 'https: //www.linkedin.com/in/318097/' },
+    { name: 'HACKEREARTH', url: 'https: //www.hackerearth.com/@318097' }
   ],
   personal_projects: [{}],
   resume: 'url'

@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, Validators, FormControl, FormBuilder } from '@angular/forms';
+import {
+  FormGroup,
+  Validators,
+  FormControl,
+  FormBuilder
+} from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthenticationService } from '../core/authentication/authentication.service';
 
@@ -11,7 +16,11 @@ import { AuthenticationService } from '../core/authentication/authentication.ser
 export class LoginComponent implements OnInit {
   loginForm: any;
 
-  constructor(private fb: FormBuilder, private router: Router, private authenticationService: AuthenticationService) { }
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private authenticationService: AuthenticationService
+  ) {}
 
   ngOnInit() {
     this.loginForm = this.fb.group({
@@ -24,10 +33,6 @@ export class LoginComponent implements OnInit {
   }
   login(form: any) {
     console.log(form);
-    const status = this.authenticationService.authenticate(form.value);
-    if (status) {
-      this.router.navigate(['admin']);
-    }
+    this.authenticationService.login(form.value);
   }
-
 }

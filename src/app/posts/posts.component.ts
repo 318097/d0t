@@ -8,23 +8,20 @@ import { PostService } from './post.service';
 })
 export class PostsComponent implements OnInit {
   postList: any;
-  constructor(private postService: PostService) { }
+  constructor(private postService: PostService) {}
 
   ngOnInit() {
     this.getAllPosts();
   }
 
   getAllPosts() {
-    this.postService.getAllPosts('POST')
-      .subscribe((response: any) => {
-        this.postList = response.posts;
-        // console.log(response);
-      });
+    this.postService.getAllPosts('POST').subscribe((response: any) => {
+      this.postList = response;
+      // console.log(response);
+    });
   }
 
   deletePost(id: number) {
-    this.postService.deletePost('POST', id)
-      .subscribe((response: any) => {
-      });
+    this.postService.deletePost('POST', id).subscribe((response: any) => {});
   }
 }

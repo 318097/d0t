@@ -1,87 +1,76 @@
-@import "variables";
+@import 'variables';
 .m-container {
-    padding: 20px;
-    width: 100%;
-    min-height: 100%;
-    margin: 0 auto;
-    background: $app-background; // border: 1px solid rgb(161, 161, 161);
-    .section {
-        margin: 7px 0;
-        padding: 10px 20px;
-    }
-}
-
-.m-card {
-    height: 160px;
-    position: relative; // width: 24%;
+  padding: 10px;
+  width: 100%;
+  min-height: 100%;
+  max-height: 100%;
+  margin: 0 auto;
+  background: $app-background;
+  .section {
     margin: 10px;
-    text-align: center;
-    padding: 10px;
-    background: #fff;
-    cursor: pointer;
-    &:hover {
-        background: rgba(230, 230, 230, 0.6);
-    }
+    padding: 20px;
+    border-radius: 5px;
+    background: rgb(238, 236, 236);
+  }
+}
+.m-card {
+  height: 160px;
+  position: relative;
+  margin: 10px;
+  text-align: center;
+  padding: 10px;
+  background: #fff;
+  cursor: pointer;
+  &:hover {
+    background: rgba(230, 230, 230, 0.6);
+  }
 }
 
 .chip {
-    height: auto;
-    width: auto;
-    margin: 3px;
-    cursor: pointer;
-    background: $primary;
-    border-radius: 10px;
-    padding: 7px 10px;
-    color: $white;
+  height: auto;
+  width: auto;
+  margin: 3px;
+  cursor: pointer;
+  background: $primary;
+  border-radius: 10px;
+  padding: 7px 10px;
+  color: $white;
 }
 
 .m-button {
-    margin: 0 5px;
-    cursor: pointer;
+  margin: 0 5px;
+  cursor: pointer;
 }
-
-// -------------------
 .success {
-    color: green;
-    font-weight: bold;
-    font-style: italic;
+  color: green;
+  font-weight: bold;
+  font-style: italic;
 }
-
 .m-icon {
-    cursor: pointer;
-    border-radius: 50%;
-    display: inline-block; // padding: 5px;
-    // &:hover {
-    //     background: lightgrey;
-    // }
+  cursor: pointer;
+  border-radius: 50%;
+  display: inline-block;
 }
 
-article {
-    .body {
-        font-size: 16px;
-    }
+.input-field {
+  width: 100%;
+  border-radius: 5px;
 }
 
+/* Scroll bar */
 /* width */
-
 ::-webkit-scrollbar {
-    width: 10px;
+  width: 10px;
 }
-
 /* Track */
-
 ::-webkit-scrollbar-track {
-    background: #f1f1f1;
+  background: #f1f1f1;
 }
-
 /* Handle */
-
 ::-webkit-scrollbar-thumb {
-    background: #888;
+  background: #888;
 }
-
 /* Handle on hover */
-
 ::-webkit-scrollbar-thumb:hover {
-    background: #555;
+  background: #555;
 }

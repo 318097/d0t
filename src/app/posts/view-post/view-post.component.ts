@@ -15,7 +15,7 @@ export class ViewPostComponent implements OnInit {
     private postService: PostService,
     private activatedRoute: ActivatedRoute,
     private router: Router
-  ) { }
+  ) {}
 
   ngOnInit() {
     // console.log(this.router);
@@ -31,10 +31,8 @@ export class ViewPostComponent implements OnInit {
   }
 
   getPostById(id: number) {
-    this.postService.getPostById('POST', id)
-      .subscribe((response: any) => {
-        this.currentPost = response.post;
-      });
+    this.postService.getPostById('POST', id).subscribe((response: any) => {
+      this.currentPost = response.data[0];
+    });
   }
-
 }

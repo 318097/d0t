@@ -1,16 +1,29 @@
 import { Component, OnInit } from '@angular/core';
 import { profile } from './profile';
+import { HttpClient } from '@angular/common/http';
+import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-resume',
   templateUrl: './resume.component.html',
   styleUrls: ['./resume.component.scss', './scssx.scss']
 })
 export class ResumeComponent implements OnInit {
-  constructor() {}
-  profile = profile;
+  constructor(
+    private http: HttpClient,
+    private activatedRoute: ActivatedRoute
+  ) {}
+  // profile: any =profile;
+  profile: any = {};
+  username: string;
   loading = true;
   ngOnInit() {
-    console.log(profile);
+    this.activatedRoute.params.subscribe(params => {
+      this.username = params.username;
+      this.http.get(`users/${this.username}/resume`).subscribe(response => {
+        this.profile = response;
+        // console.log(this.profile);
+      });
+    });
     setTimeout(() => (this.loading = false), 2000);
   }
 

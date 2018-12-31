@@ -1,24 +1,15 @@
 // chip is active
 .active {
-    color: white;
-    background: tomato;
-}
-
-.expense {
-    margin: 0;
-    padding: 0;
-    span {
-        display: inline-block;
-        width: 32%; // border: 1px solid green;
-    }
+  color: white;
+  background: tomato;
 }
 
 div.field {
-    width: 20%;
+  width: 70%;
 }
 
 @media screen and(max-width: 599px) {
-    div.field {
-        width: 50%;
-    }
+  div.field {
+    width: 50%;
+  }
 }

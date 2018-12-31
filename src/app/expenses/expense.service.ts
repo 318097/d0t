@@ -2,16 +2,15 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 const routes = {
-  'expense': 'exp',
-  'getExpenseTypes': 'exp_types',
+  expense: 'exp',
+  getExpenseTypes: 'exp/exp_types'
 };
 
 @Injectable({
   providedIn: 'root'
 })
 export class ExpenseService {
-
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   getExpenseByMonth(month: any) {
     return this.http.get(`${routes.expense}/${month}`);

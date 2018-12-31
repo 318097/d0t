@@ -2,16 +2,15 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 const routes = {
-  'POST': 'post',
-  'INSHORTS': 'inshorts'
+  POST: 'posts',
+  INSHORTS: 'inshorts'
 };
 
 @Injectable({
   providedIn: 'root'
 })
 export class PostService {
-
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   getAllPosts(type: any) {
     return this.http.get(routes[type]);

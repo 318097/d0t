@@ -8,10 +8,12 @@ import { ExpenseService } from './expense.service';
 })
 export class ExpensesComponent implements OnInit {
   amount: number;
+  message = '';
   typeId: number;
   name: string;
   disableControls = false;
   currentMonth: number;
+  currentYear: string;
   months = [
     { name: 'Jan', id: 1 },
     { name: 'Feb', id: 2 },
@@ -31,18 +33,22 @@ export class ExpensesComponent implements OnInit {
   totalExpense = 0;
   expenseTypes: any;
 
-  constructor(private expenseSerivce: ExpenseService) { }
+  constructor(private expenseSerivce: ExpenseService) {}
 
   ngOnInit() {
     this.getExpenseTypes();
     this.currentMonth = new Date().getMonth() + 1;
-    // console.log(currentMonth);
+    this.currentYear = new Date()
+      .getFullYear()
+      .toString()
+      .substr(2, 3);
     this.getExpenseByMonth(this.currentMonth);
   }
 
   getExpenseByMonth(month: number) {
     this.currentMonth = month;
-    this.expenseSerivce.getExpenseByMonth(month)
+    this.expenseSerivce
+      .getExpenseByMonth(`20${this.currentYear}-${month}`)
       .subscribe((response: any) => {
         this.monthlyExpense = response.monthly_expenses;
         this.findTotal();
@@ -55,10 +61,9 @@ export class ExpensesComponent implements OnInit {
     });
   }
   getExpenseTypes() {
-    this.expenseSerivce.getExpenseTypes()
-      .subscribe((response: any) => {
-        this.expenseTypes = response.expense_types;
-      });
+    this.expenseSerivce.getExpenseTypes().subscribe((response: any) => {
+      this.expenseTypes = response.expense_types;
+    });
   }
 
   addExpense() {
@@ -67,13 +72,13 @@ export class ExpensesComponent implements OnInit {
       amount: this.amount,
       name: this.name,
       type_id: this.typeId,
-      user_id: 1
+      message: this.message
     };
-    this.expenseSerivce.addExpense(data)
-      .subscribe((response: any) => {
-        this.disableControls = false;
-        this.getExpenseByMonth(this.currentMonth);
-      });
+    this.expenseSerivce.addExpense(data).subscribe((response: any) => {
+      this.message = '';
+      this.disableControls = false;
+      this.getExpenseByMonth(this.currentMonth);
+    });
   }
   updateExpense() {
     const data = {
@@ -82,19 +87,54 @@ export class ExpensesComponent implements OnInit {
       type_id: this.typeId,
       user_id: 1
     };
-    this.expenseSerivce.updateExpense(data)
-      .subscribe((response: any) => {
-      });
+    this.expenseSerivce.updateExpense(data).subscribe((response: any) => {});
   }
-  deleteExpense(id: number) {
-    this.expenseSerivce.deleteExpense(id)
-      .subscribe((response: any) => {
-      });
+  deleteExpense(id: any) {
+    this.expenseSerivce.deleteExpense(id).subscribe((response: any) => {
+      this.getExpenseByMonth(this.currentMonth);
+    });
   }
 
   formatDate(date: any) {
-    const x = date.split(' ')[0].split('-');
+    const x = date.split('T')[0].split('-');
     return `${x[2]}/${x[1]}`;
   }
-
+  getMonth(m) {
+    m = m + '';
+    switch (m) {
+      case '1':
+      case '01':
+        return 'Jan';
+      case '2':
+      case '02':
+        return 'Feb';
+      case '3':
+      case '03':
+        return 'Mar';
+      case '4':
+      case '04':
+        return 'Apr';
+      case '5':
+      case '05':
+        return 'May';
+      case '6':
+      case '06':
+        return 'Jun';
+      case '7':
+      case '07':
+        return 'Jul';
+      case '8':
+      case '08':
+        return 'Aug';
+      case '9':
+      case '09':
+        return 'Sep';
+      case '10':
+        return 'Oct';
+      case '11':
+        return 'Nov';
+      case '12':
+        return 'Dec';
+    }
+  }
 }

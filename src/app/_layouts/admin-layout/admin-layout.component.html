@@ -1,20 +1,38 @@
 <div class="root">
-    <header fxLayout="row" fxLayoutAlign="space-between start">
-        <div fxFlex="15" routerLink="/home" class="logo">BrainBox.in</div>
-        <div>
-            <button class="menu-button" fxFlex="0 0 auto" fxHide fxShow.xs (click)="showMenu = !showMenu"> Menu</button>
-            <button class="menu-button" (click)="logout()">Logout</button>
-        </div>
-    </header>
-    <div class="body" fxLayout="row" fxLayout.xs="column">
-        <nav fxFlex="15" fxFlex.xs="" [fxShow.xs]="showMenu">
-            <a routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" routerLink="/admin">Dashboard</a>
-            <a routerLinkActive="active" routerLink="/admin/articles">Articles/Posts</a>
-            <a routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" routerLink="/admin/expenses">Expenses</a>
-            <a routerLinkActive="active" routerLink="/admin/posts/add">Add Post</a>
-        </nav>
-        <main fxFlex="85">
-            <router-outlet></router-outlet>
-        </main>
+  <header fxLayout="row" fxLayoutAlign="space-between start">
+    <div fxFlex="15" routerLink="/home">
+      <h1 class="logo" style="text-align: left">BrainBox.in</h1>
     </div>
+    <div>
+      <button
+        class="menu-button"
+        fxFlex="0 0 auto"
+        fxHide
+        fxShow.xs
+        (click)="showMenu = !showMenu"
+      >
+        Menu
+      </button>
+      <button class="menu-button" (click)="logout()">Logout</button>
+    </div>
+  </header>
+  <div class="body" fxLayout="row" fxLayout.xs="column">
+    <nav fxFlex="10" fxFlex.xs="" [fxShow.xs]="showMenu">
+      <a
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+        routerLink="/admin"
+        >Dashboard</a
+      >
+      <a routerLinkActive="active" routerLink="/admin/diary">Diary</a>
+      <a
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+        routerLink="/admin/expenses"
+        >Expenses</a
+      >
+      <!-- <a routerLinkActive="active" routerLink="/admin/posts/add">Add Post</a> -->
+    </nav>
+    <main fxFlex="90"><router-outlet></router-outlet></main>
+  </div>
 </div>

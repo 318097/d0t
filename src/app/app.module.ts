@@ -18,8 +18,6 @@ import { AdminLayoutComponent } from './_layouts/admin-layout/admin-layout.compo
 import { PublicLayoutComponent } from './_layouts/public-layout/public-layout.component';
 import { AdminComponent } from './admin/admin.component';
 import { LoginComponent } from './login/login.component';
-import { ArticlesComponent } from './admin/articles/articles.component';
-// import { NgxEditorModule } from 'ngx-editor';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
 import { ResumeComponent } from './resume/resume.component';
@@ -38,8 +36,7 @@ import { ResumeComponent } from './resume/resume.component';
     PublicLayoutComponent,
     AdminComponent,
     LoginComponent,
-    ArticlesComponent,
-    ResumeComponent,
+    ResumeComponent
   ],
   imports: [
     BrowserModule,
@@ -50,7 +47,6 @@ import { ResumeComponent } from './resume/resume.component';
     ReactiveFormsModule,
     MaterialModule,
     BrowserAnimationsModule
-    // NgxEditorModule,
   ],
   providers: [
     // use the http interceptors to handle all outgoing requests.
@@ -58,4 +54,4 @@ import { ResumeComponent } from './resume/resume.component';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

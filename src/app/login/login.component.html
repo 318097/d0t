@@ -2,15 +2,24 @@
   <div class="login-form">
     <form [formGroup]="loginForm" (ngSubmit)="login(loginForm)">
       <div class="input-container">
-        <input type="text" formControlName="username" name="username" placeholder="Username">
+        <input
+          type="text"
+          formControlName="username"
+          name="username"
+          placeholder="Username"
+        />
       </div>
       <div class="input-container">
-        <input type="password" formControlName="password" name="password" placeholder="Password">
+        <input
+          type="password"
+          formControlName="password"
+          name="password"
+          placeholder="Password"
+        />
       </div>
       <div class="input-container">
         <button class="ui button" type="submit">Login</button>
       </div>
     </form>
-    <!-- {{loginForm.value | json}} -->
   </div>
 </div>

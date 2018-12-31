@@ -12,7 +12,6 @@ import { PublicLayoutComponent } from './_layouts/public-layout/public-layout.co
 import { AdminComponent } from './admin/admin.component';
 import { LoginComponent } from './login/login.component';
 import { AuthenticationGuard } from './core/authentication/authentication.guard';
-import { ArticlesComponent } from './admin/articles/articles.component';
 import { ResumeComponent } from './resume/resume.component';
 
 const appRoutes: Routes = [
@@ -22,10 +21,10 @@ const appRoutes: Routes = [
     canActivate: [AuthenticationGuard],
     children: [
       { path: '', component: AdminComponent },
-      { path: 'articles', component: ArticlesComponent },
+      { path: 'diary', component: DiaryComponent },
       { path: 'posts/add', component: AddPostComponent },
       { path: 'posts/edit/:type/:id', component: AddPostComponent },
-      { path: 'expenses', component: ExpensesComponent },
+      { path: 'expenses', component: ExpensesComponent }
     ]
   },
   {
@@ -34,31 +33,27 @@ const appRoutes: Routes = [
     children: [
       { path: 'home', component: HomeComponent },
       {
-        path: 'posts', children: [
+        path: 'posts',
+        children: [
           { path: '', component: PostsComponent },
-          { path: ':id', component: ViewPostComponent },
+          { path: ':id', component: ViewPostComponent }
         ]
       },
       {
-        path: 'diary', children: [
-          { path: '', component: DiaryComponent },
-        ]
+        path: 'diary',
+        children: [{ path: '', component: DiaryComponent }]
       },
-      { path: 'inshorts', component: InshortsComponent },
+      { path: 'inshorts', component: InshortsComponent }
     ]
   },
   { path: 'login', component: LoginComponent },
   { path: 'resume', component: ResumeComponent },
+  { path: ':username/resume', component: ResumeComponent },
   { path: '**', redirectTo: 'home', pathMatch: 'full' }
 ];
 
 @NgModule({
-  imports: [
-    RouterModule.forRoot(appRoutes)
-  ],
-  exports: [
-    RouterModule
-  ]
+  imports: [RouterModule.forRoot(appRoutes)],
+  exports: [RouterModule]
 })
-
-export class AppRoutingModule { }
+export class AppRoutingModule {}
