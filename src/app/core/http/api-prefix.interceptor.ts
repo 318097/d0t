@@ -9,7 +9,8 @@ import { Observable } from 'rxjs';
 // import { environment } from '../enviroment/environment';
 
 // const serverURL = 'http://at0m.brainbox.in/api/';
-const serverURL = 'http://localhost:3000/api/';
+// const serverURL = 'http://localhost:3000/api/';
+const serverURL = 'https://bubblegum-server.herokuapp.com/api/';
 
 @Injectable()
 export class ApiPrefixInterceptor implements HttpInterceptor {
