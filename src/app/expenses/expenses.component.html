@@ -2,21 +2,17 @@
   <div class="section">
     <h1>Expenses</h1>
     <div id="months" fxLayout="row wrap" fxLayoutAlign="center start">
-      <div
-        fxFlex="0 0 auto"
-        *ngFor="let month of months"
-        class="chip"
-        [ngClass]="{ active: month.id === currentMonth }"
-        (click)="getExpenseByMonth(month.id)"
-      >
+      <div fxFlex="0 0 auto" *ngFor="let month of months" class="chip" [ngClass]="{ active: month.id === currentMonth }"
+        (click)="getExpenseByMonth(month.id)">
         {{ month.name }}
       </div>
     </div>
   </div>
+
   <div class="section">
     <h2>{{ 'Expense for ' + getMonth(currentMonth) + ', ' + currentYear }}</h2>
-    <div fxLayout="row" fxLayoutAlign="space-around start">
-      <div fxFlex="50">
+    <div fxLayout="row" fxLayout.xs="column-reverse" fxLayoutAlign="space-around start" fxLayoutAlign.xs="center">
+      <div style="margin: 10px 0" fxFlex="50" fxFlex.xs="100">
         <table *ngIf="monthlyExpense.length > 0" style="width:100%">
           <tr *ngFor="let expense of monthlyExpense">
             <td>Rs/- {{ expense.amount }}</td>
@@ -26,91 +22,54 @@
               <span (click)="deleteExpense(expense.id)">
                 <i class="material-icons"> delete </i>
               </span>
-              <span
-                *ngIf="
+              <span *ngIf="
                   expense.message &&
                   expense.message.length > 0 &&
                   expense.message !== 'undefined'
-                "
-                [title]="expense.message"
-              >
+                " [title]="expense.message">
                 <i class="material-icons"> message </i>
               </span>
             </td>
           </tr>
         </table>
 
-        <br />
         <p class="expense" style="font-weight: bold">
           Total : Rs/- {{ totalExpense }}
         </p>
-        <div *ngIf="monthlyExpense.length === 0"><p>No Expense.</p></div>
+        <div *ngIf="monthlyExpense.length === 0">
+          <p>No Expense.</p>
+        </div>
       </div>
-      <div fxFlex="30">
-        <form class="ui form" autocomplete="off" (ngSubmit)="addExpense()">
+      <div fxFlex="30" fxFlex.xs="100">
+        <form class="ui form" autocomplete="off" (ngSubmit)="addExpense()" style="width: 100%">
           <div class="field">
-            <input
-              type="text"
-              class="ui input"
-              [(ngModel)]="amount"
-              name="amount"
-              placeholder="Amount"
-            />
+            <input type="text" class="ui input" [(ngModel)]="amount" name="amount" placeholder="Amount" />
           </div>
 
           <div class="field">
-            <input
-              type="text"
-              class="ui input"
-              [(ngModel)]="message"
-              name="message"
-              placeholder="Message"
-            />
+            <input type="text" class="ui input" [(ngModel)]="message" name="message" placeholder="Message" />
           </div>
 
           <div class="field">
             <label>Expense Type</label>
             <div *ngFor="let type of expenseTypes">
               <div class="ui radio checkbox">
-                <input
-                  type="radio"
-                  [value]="type.id"
-                  name="typeId"
-                  [(ngModel)]="typeId"
-                  [id]="type.id"
-                />
+                <input type="radio" [value]="type.id" name="typeId" [(ngModel)]="typeId" [id]="type.id" />
                 <label [for]="type.id">&nbsp;{{ type.name }}</label>
               </div>
             </div>
             <div class="ui radio checkbox">
-              <input
-                type="radio"
-                value="0"
-                name="typeId"
-                [(ngModel)]="typeId"
-                id="0"
-              />
+              <input type="radio" value="0" name="typeId" [(ngModel)]="typeId" id="0" />
               <label [for]="0">&nbsp;New</label>
             </div>
           </div>
 
           <div *ngIf="typeId == 0" class="field">
-            <input
-              type="text"
-              class="ui input"
-              name="field"
-              [(ngModel)]="name"
-              placeholder="New..."
-            />
+            <input type="text" class="ui input" name="field" [(ngModel)]="name" placeholder="New..." />
           </div>
 
           <div>
-            <input
-              type="submit"
-              class="m-button ui button"
-              [disabled]="disableControls"
-              value="Add"
-            />
+            <input type="submit" class="m-button ui button" [disabled]="disableControls" value="Add" />
           </div>
         </form>
       </div>
